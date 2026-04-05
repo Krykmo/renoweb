@@ -427,7 +427,7 @@
   function selectChip(gid,el){document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
   function getChips(gid){return Array.from(document.querySelectorAll('#'+gid+' .chip.selected')).map(c=>c.textContent).join(', ')||'—';}
 
-  async function submitDevis(){
+  function submitDevis(){
     const prenom=document.getElementById('f-prenom').value||'Client';
     const nom=document.getElementById('f-nom').value||'';
     const email=document.getElementById('f-email').value||'—';
@@ -446,25 +446,7 @@
     const logo=getChips('chips-logo');
     const domaine=getChips('chips-domaine');
 
-    // 1. Envoi email via Formspree (email encodé pour éviter blocage Cloudflare)
-    const formData={
-      _subject:'Devis RenoWeb - '+prenom+' '+nom,
-      Prenom:prenom, Nom:nom, EmailClient:email, Tel:tel,
-      Metier:metier, Zone:zone, Description:desc,
-      Services:services, Couleurs:couleurs,
-      Photos:photos, Concurrent:concurrent,
-      Inspiration:exemples, Budget:budget,
-      Delai:delai, Logo:logo, Domaine:domaine,
-      Infos:autres
-    };
-    try {
-      await fetch('https://formspree.io/f/xkgjpdpw',{
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify(formData)
-      });
-    } catch(err){ console.log('Formspree error',err); }
-
-    // 2. Ouvrir WhatsApp avec résumé
+    // Ouvrir WhatsApp avec résumé
     const waMsg=
       '🔔 *Nouvelle demande de devis RénoWeb*\n\n'+
       '👤 *'+prenom+' '+nom+'*\n'+
