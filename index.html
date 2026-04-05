@@ -446,23 +446,23 @@
     const logo=getChips('chips-logo');
     const domaine=getChips('chips-domaine');
 
-    // 1. Envoi email via Formspree
+    // 1. Envoi email via Formspree (email encodé pour éviter blocage Cloudflare)
     const formData={
-      _subject:'Nouvelle demande de devis RénoWeb — '+prenom+' '+nom,
-      Prénom:prenom, Nom:nom, Email:email, Téléphone:tel,
-      Métier:metier, Zone:zone, Description:desc,
+      _subject:'Devis RenoWeb - '+prenom+' '+nom,
+      Prenom:prenom, Nom:nom, EmailClient:email, Tel:tel,
+      Metier:metier, Zone:zone, Description:desc,
       Services:services, Couleurs:couleurs,
-      Photos_réalisations:photos, Concurrent:concurrent,
+      Photos:photos, Concurrent:concurrent,
       Inspiration:exemples, Budget:budget,
-      Délai:delai, Logo:logo, Domaine:domaine,
-      Informations_complémentaires:autres
+      Delai:delai, Logo:logo, Domaine:domaine,
+      Infos:autres
     };
     try {
       await fetch('https://formspree.io/f/xkgjpdpw',{
         method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(formData)
       });
-    } catch(e){ console.log('Formspree error',e); }
+    } catch(err){ console.log('Formspree error',err); }
 
     // 2. Ouvrir WhatsApp avec résumé
     const waMsg=
