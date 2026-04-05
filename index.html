@@ -3,32 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RénoWeb – Sites web pour artisans du bâtiment</title>
+<title>RenoWeb - Sites web pour artisans du batiment</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #E8531D; --orange-dark: #c94418;
-    --navy: #0d1b2a; --navy2: #132238; --navy3: #1a2f4a;
-    --text: #f0f4f8; --muted: #8fa3bc;
-    --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.08);
-    --white: #ffffff;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--text); overflow-x: hidden; }
-  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(232,83,29,0.4);}50%{box-shadow:0 0 0 12px rgba(232,83,29,0);} }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--orange:#E8531D;--orange-dark:#c94418;--navy:#0d1b2a;--navy2:#132238;--navy3:#1a2f4a;--text:#f0f4f8;--muted:#8fa3bc;--card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.08);--white:#ffffff;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,83,29,0.4);}50%{box-shadow:0 0 0 12px rgba(232,83,29,0);}}
   .fade-up{opacity:0;animation:fadeUp 0.7s ease forwards;}
   .delay-1{animation-delay:0.1s;}.delay-2{animation-delay:0.2s;}.delay-3{animation-delay:0.3s;}.delay-4{animation-delay:0.4s;}
-
   .nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;position:sticky;top:0;z-index:100;background:rgba(13,27,42,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);}
   .logo{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:var(--white);}
   .logo span{color:var(--orange);}
   .nav-cta{background:var(--orange);color:#fff;font-size:14px;font-weight:600;padding:10px 22px;border-radius:50px;border:none;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;animation:pulse 2.5s infinite;}
   .nav-cta:hover{background:var(--orange-dark);transform:scale(1.04);}
-
   .hero{position:relative;padding:6rem 2rem 5rem;text-align:center;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(232,83,29,0.18) 0%,transparent 70%),linear-gradient(180deg,var(--navy2) 0%,var(--navy) 100%);overflow:hidden;}
-  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
   .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,83,29,0.12);color:#ff7a50;font-size:13px;padding:6px 16px;border-radius:50px;margin-bottom:1.6rem;font-weight:600;border:1px solid rgba(232,83,29,0.25);}
   .badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#ff7a50;display:inline-block;animation:pulse 1.8s infinite;}
   .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:900;color:var(--white);line-height:1.18;margin-bottom:1.3rem;}
@@ -37,27 +28,22 @@
   .hero-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
   .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-size:16px;font-weight:600;padding:16px 34px;border-radius:50px;cursor:pointer;border:none;text-decoration:none;transition:background 0.2s,transform 0.15s;}
   .btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);}
-  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-size:15px;font-weight:500;padding:16px 28px;border-radius:50px;cursor:pointer;border:1px solid var(--card-border);text-decoration:none;transition:border-color 0.2s,background 0.2s;}
-  .btn-secondary:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);}
-
+  .btn-secondary{display:inline-flex;align-items:center;background:transparent;color:var(--text);font-size:15px;font-weight:500;padding:16px 28px;border-radius:50px;cursor:pointer;border:1px solid var(--card-border);text-decoration:none;}
   .stats-bar{display:flex;justify-content:center;background:rgba(255,255,255,0.04);border:1px solid var(--card-border);border-radius:16px;overflow:hidden;max-width:560px;margin:3.5rem auto 0;}
   .stat{flex:1;min-width:120px;text-align:center;padding:1.4rem 1rem;border-right:1px solid var(--card-border);}
   .stat:last-child{border-right:none;}
   .stat-num{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:700;color:var(--orange);}
   .stat-label{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;}
-
   .section{padding:5rem 2rem;max-width:1020px;margin:0 auto;}
   .section-tag{display:inline-block;background:rgba(232,83,29,0.1);color:var(--orange);font-size:12px;font-weight:700;padding:4px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
   .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bottom:0.6rem;}
   .section-sub{font-size:16px;color:var(--muted);text-align:center;margin-bottom:3rem;line-height:1.75;max-width:560px;margin-left:auto;margin-right:auto;}
-
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:1.8rem;transition:border-color 0.25s,transform 0.25s,background 0.25s;}
   .card:hover{border-color:rgba(232,83,29,0.4);background:rgba(232,83,29,0.06);transform:translateY(-4px);}
   .card-icon{width:48px;height:48px;border-radius:12px;background:rgba(232,83,29,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px;}
   .card h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
   .card p{font-size:14px;color:var(--muted);line-height:1.7;}
-
   .process-bg{background:rgba(255,255,255,0.02);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);}
   .steps{display:flex;flex-direction:column;max-width:680px;margin:0 auto;}
   .step{display:flex;gap:1.5rem;align-items:flex-start;padding:1.8rem 0;border-bottom:1px solid var(--card-border);}
@@ -65,7 +51,6 @@
   .step-num{width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .step-content h4{font-size:16px;font-weight:600;color:var(--white);margin-bottom:5px;}
   .step-content p{font-size:14px;color:var(--muted);line-height:1.7;}
-
   .offer-card{background:linear-gradient(145deg,var(--navy3),var(--navy2));border:1.5px solid rgba(232,83,29,0.4);border-radius:24px;padding:2.8rem;max-width:480px;margin:0 auto;position:relative;box-shadow:0 0 60px rgba(232,83,29,0.1);}
   .popular-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:12px;font-weight:700;padding:6px 20px;border-radius:50px;white-space:nowrap;}
   .price{font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:700;color:var(--white);letter-spacing:-1px;}
@@ -75,17 +60,14 @@
   .feature-list li:last-child{border-bottom:none;}
   .check{color:var(--orange);font-weight:800;font-size:16px;flex-shrink:0;}
   .guarantee{background:rgba(232,83,29,0.1);border:1px solid rgba(232,83,29,0.2);border-radius:10px;padding:12px 16px;margin:1.2rem 0 1.5rem;font-size:14px;color:#ff9a78;font-weight:500;text-align:center;}
-
   .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .testi{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:1.6rem;transition:border-color 0.2s;}
-  .testi:hover{border-color:rgba(255,255,255,0.15);}
+  .testi{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:1.6rem;}
   .stars{color:var(--orange);font-size:15px;margin-bottom:12px;letter-spacing:2px;}
   .testi p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px;font-style:italic;}
   .testi-footer{display:flex;align-items:center;gap:10px;}
   .avatar{width:38px;height:38px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
   .testi-name{font-size:13px;font-weight:600;color:var(--white);}
   .testi-role{font-size:12px;color:var(--muted);}
-
   .faq-wrap{max-width:680px;margin:0 auto;}
   .faq-item{border-bottom:1px solid var(--card-border);}
   .faq-q{font-size:15px;font-weight:600;color:var(--white);padding:1.2rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s;}
@@ -94,30 +76,23 @@
   .faq-item.open .faq-q .arrow{transform:rotate(180deg);}
   .faq-a{font-size:14px;color:var(--muted);line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.3s;}
   .faq-item.open .faq-a{max-height:200px;padding-bottom:1.2rem;}
-
   .cta-section{background:linear-gradient(135deg,rgba(232,83,29,0.12) 0%,rgba(13,27,42,0) 60%),var(--navy2);border-top:1px solid var(--card-border);padding:5rem 2rem;text-align:center;}
   .divider-line{border:none;border-top:1px solid var(--card-border);}
   .footer{text-align:center;padding:2rem;font-size:13px;color:var(--muted);border-top:1px solid var(--card-border);}
-
-  /* MODAL */
   .devis-modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(8,16,28,0.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
   .devis-modal-overlay.active{display:flex;}
   .devis-modal{background:var(--navy2);border:1px solid var(--card-border);border-radius:24px;padding:2.5rem;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;position:relative;animation:fadeUp 0.35s ease;}
-  .modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;transition:color 0.2s;}
-  .modal-close:hover{color:var(--white);}
-
+  .modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;}
   .progress-wrap{margin-bottom:2rem;}
   .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
   .progress-label{font-size:13px;color:var(--muted);}
   .progress-step{font-size:13px;font-weight:600;color:var(--orange);}
   .progress-bar{height:4px;background:var(--card-border);border-radius:4px;overflow:hidden;}
   .progress-fill{height:100%;background:var(--orange);border-radius:4px;transition:width 0.4s ease;}
-
   .step-page{display:none;}
   .step-page.active{display:block;}
   .step-page h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
   .step-page .step-desc{font-size:14px;color:var(--muted);margin-bottom:1.8rem;line-height:1.6;}
-
   .field{margin-bottom:1.2rem;}
   .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
   .field input,.field select,.field textarea{width:100%;padding:13px 16px;font-size:15px;border-radius:12px;border:1px solid var(--card-border);background:rgba(255,255,255,0.05);color:var(--white);outline:none;transition:border-color 0.2s;font-family:'DM Sans',sans-serif;}
@@ -126,18 +101,13 @@
   .field select option{background:var(--navy2);color:var(--white);}
   .field textarea{resize:vertical;min-height:80px;}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
   .chip{padding:8px 16px;border-radius:50px;font-size:13px;font-weight:500;border:1px solid var(--card-border);background:var(--card-bg);color:var(--muted);cursor:pointer;transition:all 0.2s;user-select:none;}
-  .chip:hover{border-color:rgba(232,83,29,0.4);color:var(--text);}
   .chip.selected{background:rgba(232,83,29,0.15);border-color:var(--orange);color:var(--orange);font-weight:600;}
-
   .form-nav{display:flex;gap:12px;margin-top:2rem;}
-  .btn-back{flex:1;padding:14px;border-radius:12px;border:1px solid var(--card-border);background:transparent;color:var(--muted);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
-  .btn-back:hover{border-color:rgba(255,255,255,0.2);color:var(--white);}
-  .btn-next{flex:2;padding:14px;border-radius:12px;border:none;background:var(--orange);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s,transform 0.15s;font-family:'DM Sans',sans-serif;}
-  .btn-next:hover{background:var(--orange-dark);transform:translateY(-1px);}
-
+  .btn-back{flex:1;padding:14px;border-radius:12px;border:1px solid var(--card-border);background:transparent;color:var(--muted);font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-next{flex:2;padding:14px;border-radius:12px;border:none;background:var(--orange);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-next:hover{background:var(--orange-dark);}
   .confirmation-page{display:none;text-align:center;padding:1rem 0;}
   .confirmation-page.active{display:block;}
   .confirm-icon{font-size:56px;margin-bottom:1rem;}
@@ -148,39 +118,27 @@
   .summary-row:last-child{border-bottom:none;}
   .summary-row span:first-child{color:var(--muted);}
   .summary-row span:last-child{color:var(--white);font-weight:500;}
-
-  @media(max-width:680px){
-    .cards{grid-template-columns:1fr;}
-    .testimonials{grid-template-columns:1fr;}
-    .stats-bar{flex-direction:column;}
-    .stat{border-right:none;border-bottom:1px solid var(--card-border);}
-    .stat:last-child{border-bottom:none;}
-    .hero h1{font-size:32px;}
-    .hero-btns{flex-direction:column;align-items:center;}
-    .nav{padding:1rem 1.2rem;}
-    .field-row{grid-template-columns:1fr;}
-    .devis-modal{padding:1.8rem 1.4rem;}
-  }
+  @media(max-width:680px){.cards{grid-template-columns:1fr;}.testimonials{grid-template-columns:1fr;}.stats-bar{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--card-border);}.stat:last-child{border-bottom:none;}.hero h1{font-size:32px;}.hero-btns{flex-direction:column;align-items:center;}.nav{padding:1rem 1.2rem;}.field-row{grid-template-columns:1fr;}.devis-modal{padding:1.8rem 1.4rem;}}
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <div class="logo">Réno<span>Web</span></div>
-  <a href="#" class="nav-cta" data-devis="1">Devis gratuit</a>
+  <div class="logo">Reno<span>Web</span></div>
+  <a href="#" class="nav-cta" id="btn-nav">Devis gratuit</a>
 </nav>
 
 <div class="hero">
-  <div class="badge fade-up">Spécialiste artisans du bâtiment</div>
-  <h1 class="fade-up delay-1">Votre site web professionnel<br>livré en <span>7 jours chrono</span></h1>
-  <p class="fade-up delay-2">Plombier, électricien, peintre ou maçon ? On crée votre vitrine digitale clé en main pour que vos clients vous trouvent sur Google — sans prise de tête.</p>
+  <div class="badge fade-up">Specialiste artisans du batiment</div>
+  <h1 class="fade-up delay-1">Votre site web professionnel<br>livre en <span>7 jours chrono</span></h1>
+  <p class="fade-up delay-2">Plombier, electricien, peintre ou macon ? On cree votre vitrine digitale cle en main pour que vos clients vous trouvent sur Google.</p>
   <div class="hero-btns fade-up delay-3">
-    <a href="#" class="btn-primary" data-devis="1">Obtenir mon devis gratuit →</a>
+    <a href="#" class="btn-primary" id="btn-hero">Obtenir mon devis gratuit</a>
     <a href="#offre" class="btn-secondary">Voir l'offre</a>
   </div>
   <div class="stats-bar fade-up delay-4">
-    <div class="stat"><div class="stat-num">7j</div><div class="stat-label">délai garanti</div></div>
-    <div class="stat"><div class="stat-num">1490€</div><div class="stat-label">tout compris</div></div>
+    <div class="stat"><div class="stat-num">7j</div><div class="stat-label">delai garanti</div></div>
+    <div class="stat"><div class="stat-num">1490</div><div class="stat-label">tout compris</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">satisfaction</div></div>
   </div>
 </div>
@@ -188,11 +146,11 @@
 <div class="section">
   <div style="text-align:center"><div class="section-tag">Pourquoi agir</div></div>
   <div class="section-title">Invisible sur Google = clients perdus</div>
-  <div class="section-sub">Aujourd'hui, la première chose que fait un client c'est chercher sur Google. Sans site web, vous êtes invisible — et vos concurrents en profitent.</div>
+  <div class="section-sub">La premiere chose que fait un client c'est chercher sur Google. Sans site web, vous etes invisible.</div>
   <div class="cards">
-    <div class="card"><div class="card-icon">🔍</div><h3>Visibilité sur Google</h3><p>Apparaissez en tête des résultats quand un client cherche un artisan près de chez lui.</p></div>
-    <div class="card"><div class="card-icon">📋</div><h3>Devis 24h/24</h3><p>Recevez des demandes de devis directement en ligne, même la nuit ou le week-end.</p></div>
-    <div class="card"><div class="card-icon">⭐</div><h3>Image professionnelle</h3><p>Inspirez confiance dès le premier regard avec un site moderne qui valorise votre travail.</p></div>
+    <div class="card"><div class="card-icon">&#128269;</div><h3>Visibilite sur Google</h3><p>Apparaissez en tete des resultats quand un client cherche un artisan pres de chez lui.</p></div>
+    <div class="card"><div class="card-icon">&#128203;</div><h3>Devis 24h/24</h3><p>Recevez des demandes de devis directement en ligne, meme la nuit ou le week-end.</p></div>
+    <div class="card"><div class="card-icon">&#11088;</div><h3>Image professionnelle</h3><p>Inspirez confiance des le premier regard avec un site moderne qui valorise votre travail.</p></div>
   </div>
 </div>
 
@@ -200,13 +158,12 @@
 
 <div class="process-bg">
   <div class="section">
-    <div style="text-align:center"><div class="section-tag">Notre méthode</div></div>
-    <div class="section-title">Simple, rapide, sans prise de tête</div>
-    <div class="section-sub">3 étapes et votre site est en ligne.</div>
+    <div style="text-align:center"><div class="section-tag">Notre methode</div></div>
+    <div class="section-title">Simple, rapide, sans prise de tete</div>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Vous nous contactez</h4><p>On prend le temps de comprendre votre activité, votre zone et vos besoins en 15 minutes.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>On crée votre site</h4><p>Notre équipe conçoit votre site personnalisé. Vous validez le design avant publication.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Livraison en 7 jours</h4><p>Votre site est en ligne, optimisé Google, et vous recevez tous les accès. C'est tout.</p></div></div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Vous nous contactez</h4><p>On prend le temps de comprendre votre activite, votre zone et vos besoins.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>On cree votre site</h4><p>Notre equipe concoit votre site personnalise. Vous validez le design avant publication.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Livraison en 7 jours</h4><p>Votre site est en ligne, optimise Google, et vous recevez tous les acces.</p></div></div>
     </div>
   </div>
 </div>
@@ -214,207 +171,176 @@
 <div class="section" id="offre">
   <div style="text-align:center"><div class="section-tag">Tarif</div></div>
   <div class="section-title">Une offre tout compris</div>
-  <div class="section-sub">Un prix fixe, sans surprise, sans abonnement caché.</div>
+  <div class="section-sub">Un prix fixe, sans surprise, sans abonnement cache.</div>
   <div class="offer-card">
-    <div class="popular-badge">⚡ Offre la plus demandée</div>
-    <div class="price">1 490€ <span>TTC</span></div>
+    <div class="popular-badge">Offre la plus demandee</div>
+    <div class="price">1 490 <span>TTC</span></div>
     <p style="font-size:13px;color:var(--muted);margin-top:6px;">Paiement en 2 fois sans frais disponible</p>
-    <div class="guarantee">🛡️ Retouches illimitées jusqu'à votre validation</div>
+    <div class="guarantee">Retouches illimitees jusqu'a votre validation</div>
     <ul class="feature-list">
-      <li><span class="check">✓</span> Site 5 pages (accueil, services, réalisations, avis, contact)</li>
-      <li><span class="check">✓</span> Design personnalisé à vos couleurs</li>
-      <li><span class="check">✓</span> Compatible mobile et tablette</li>
-      <li><span class="check">✓</span> Référencement Google (SEO local)</li>
-      <li><span class="check">✓</span> Formulaire de contact + Google Maps</li>
-      <li><span class="check">✓</span> Livraison garantie en 7 jours</li>
-      <li><span class="check">✓</span> 1 mois de support offert</li>
+      <li><span class="check">+</span> Site 5 pages (accueil, services, realisations, avis, contact)</li>
+      <li><span class="check">+</span> Design personnalise a vos couleurs</li>
+      <li><span class="check">+</span> Compatible mobile et tablette</li>
+      <li><span class="check">+</span> Referencement Google (SEO local)</li>
+      <li><span class="check">+</span> Formulaire de contact + Google Maps</li>
+      <li><span class="check">+</span> Livraison garantie en 7 jours</li>
+      <li><span class="check">+</span> 1 mois de support offert</li>
     </ul>
-    <a href="#" class="btn-primary" data-devis="1" style="display:flex;justify-content:center;width:100%;font-size:16px;padding:17px;border-radius:12px;">Je veux mon site web →</a>
+    <a href="#" class="btn-primary" id="btn-offre" style="display:flex;justify-content:center;width:100%;font-size:16px;padding:17px;border-radius:12px;">Je veux mon site web</a>
   </div>
 </div>
 
 <div class="section" style="padding-top:0">
-  <div style="text-align:center"><div class="section-tag">Témoignages</div></div>
+  <div style="text-align:center"><div class="section-tag">Temoignages</div></div>
   <div class="section-title">Ce que disent nos clients</div>
-  <div class="section-sub">Des artisans qui ont franchi le cap du digital.</div>
   <div class="testimonials">
-    <div class="testi"><div class="stars">★★★★★</div><p>"En 3 semaines j'ai reçu 5 demandes de devis via mon site. Avant j'avais zéro présence en ligne. Je recommande à 100%."</p><div class="testi-footer"><div class="avatar">ML</div><div><div class="testi-name">Marc L.</div><div class="testi-role">Plombier — Lyon</div></div></div></div>
-    <div class="testi"><div class="stars">★★★★★</div><p>"Site livré en 6 jours, exactement ce que je voulais. Mes clients me trouvent maintenant sur Google sans que j'aie rien à faire."</p><div class="testi-footer"><div class="avatar">SK</div><div><div class="testi-name">Sofia K.</div><div class="testi-role">Électricienne — Bordeaux</div></div></div></div>
+    <div class="testi"><div class="stars">*****</div><p>"En 3 semaines j'ai recu 5 demandes de devis via mon site. Je recommande a 100%."</p><div class="testi-footer"><div class="avatar">ML</div><div><div class="testi-name">Marc L.</div><div class="testi-role">Plombier - Lyon</div></div></div></div>
+    <div class="testi"><div class="stars">*****</div><p>"Site livre en 6 jours, exactement ce que je voulais. Mes clients me trouvent sur Google."</p><div class="testi-footer"><div class="avatar">SK</div><div><div class="testi-name">Sofia K.</div><div class="testi-role">Electricienne - Bordeaux</div></div></div></div>
   </div>
-  <p style="font-size:12px;color:#555;text-align:center;margin-top:1rem;">* Témoignages de nos premiers clients bêta</p>
 </div>
 
 <hr class="divider-line">
 
 <div class="section">
   <div style="text-align:center"><div class="section-tag">FAQ</div></div>
-  <div class="section-title">Questions fréquentes</div>
+  <div class="section-title">Questions frequentes</div>
   <div style="margin-top:2rem;" class="faq-wrap">
-    <div class="faq-item"><div class="faq-q">Je n'ai aucune connaissance en informatique, est-ce que ça pose problème ? <span class="arrow">▾</span></div><div class="faq-a">Aucun problème. On s'occupe de tout de A à Z. Vous n'avez rien à faire techniquement.</div></div>
-    <div class="faq-item"><div class="faq-q">Est-ce que je pourrai modifier mon site après livraison ? <span class="arrow">▾</span></div><div class="faq-a">Oui, on vous remet les accès complets. Et si vous avez besoin d'aide, notre support est là pendant 1 mois.</div></div>
-    <div class="faq-item"><div class="faq-q">Que se passe-t-il si le résultat ne me convient pas ? <span class="arrow">▾</span></div><div class="faq-a">On fait autant de retouches que nécessaire jusqu'à votre validation. Votre satisfaction est notre priorité absolue.</div></div>
-    <div class="faq-item"><div class="faq-q">Y a-t-il des frais cachés après la livraison ? <span class="arrow">▾</span></div><div class="faq-a">Non. Le prix est fixe et tout compris. Vous gérez ensuite votre hébergement (environ 5€/mois).</div></div>
+    <div class="faq-item"><div class="faq-q">Je n'ai aucune connaissance en informatique ? <span class="arrow">v</span></div><div class="faq-a">Aucun probleme. On s'occupe de tout de A a Z.</div></div>
+    <div class="faq-item"><div class="faq-q">Puis-je modifier mon site apres livraison ? <span class="arrow">v</span></div><div class="faq-a">Oui, on vous remet les acces complets et notre support est la pendant 1 mois.</div></div>
+    <div class="faq-item"><div class="faq-q">Que se passe-t-il si le resultat ne me convient pas ? <span class="arrow">v</span></div><div class="faq-a">On fait autant de retouches que necessaire jusqu'a votre validation.</div></div>
+    <div class="faq-item"><div class="faq-q">Y a-t-il des frais caches ? <span class="arrow">v</span></div><div class="faq-a">Non. Prix fixe tout compris. Vous gerez ensuite votre hebergement (environ 5 euros/mois).</div></div>
   </div>
 </div>
 
 <div class="cta-section" id="contact">
   <div style="text-align:center"><div class="section-tag">Contact</div></div>
-  <div class="section-title">Prêt à booster votre activité ?</div>
-  <div class="section-sub">Remplissez notre formulaire en 2 minutes et recevez votre devis personnalisé sous 24h.</div>
-  <a href="#" class="btn-primary" data-devis="1" style="font-size:17px;padding:18px 40px;">Démarrer mon devis gratuit →</a>
-  <p style="font-size:13px;color:var(--muted);margin-top:1rem;">Sans engagement · Réponse sous 24h · 100% gratuit</p>
+  <div class="section-title">Pret a booster votre activite ?</div>
+  <div class="section-sub">Remplissez notre formulaire en 2 minutes et recevez votre devis personnalise sous 24h.</div>
+  <a href="#" class="btn-primary" id="btn-cta" style="font-size:17px;padding:18px 40px;">Demarrer mon devis gratuit</a>
 </div>
 
-<div class="footer">&#169; 2026 R&#233;noWeb &middot; contact&#64;renoweb&#46;fr</div>
+<div class="footer">2026 RenoWeb - contact@renoweb.fr</div>
 
-<!-- MODAL DEVIS -->
 <div class="devis-modal-overlay" id="devisModal">
   <div class="devis-modal" id="devisBox">
-    <button class="modal-close" data-close="1">✕</button>
-
+    <button class="modal-close" id="btn-close">X</button>
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-header">
-        <span class="progress-label" id="progressLabel">Étape 1 sur 4</span>
+        <span class="progress-label" id="progressLabel">Etape 1 sur 4</span>
         <span class="progress-step" id="progressTitle">Vos informations</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
     </div>
-
-    <!-- ÉTAPE 1 -->
     <div class="step-page active" id="page1">
       <h2>Vos informations</h2>
-      <p class="step-desc">On a besoin de vous connaître pour vous envoyer votre devis personnalisé.</p>
+      <p class="step-desc">On a besoin de vous connaitre pour vous envoyer votre devis.</p>
       <div class="field-row">
-        <div class="field"><label>Prénom</label><input type="text" id="f-prenom" placeholder="Jean"></div>
+        <div class="field"><label>Prenom</label><input type="text" id="f-prenom" placeholder="Jean"></div>
         <div class="field"><label>Nom</label><input type="text" id="f-nom" placeholder="Dupont"></div>
       </div>
       <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="jean.dupont@email.com"></div>
-      <div class="field"><label>Téléphone</label><input type="tel" id="f-tel" placeholder="06 12 34 56 78"></div>
-      <div class="form-nav">
-        <button class="btn-next" data-goto="2">Continuer →</button>
-      </div>
+      <div class="field"><label>Telephone</label><input type="tel" id="f-tel" placeholder="06 12 34 56 78"></div>
+      <div class="form-nav"><button class="btn-next" id="next1">Continuer</button></div>
     </div>
-
-    <!-- ÉTAPE 2 -->
     <div class="step-page" id="page2">
-      <h2>Votre activité</h2>
-      <p class="step-desc">Ces informations nous permettent de créer un site parfaitement adapté à votre secteur.</p>
-      <div class="field">
-        <label>Votre métier</label>
-        <select id="f-metier">
-          <option value="">Sélectionnez votre métier</option>
-          <option>Plombier</option><option>Électricien</option><option>Peintre</option>
-          <option>Maçon</option><option>Charpentier / Menuisier</option><option>Carreleur</option>
-          <option>Couvreur</option><option>Chauffagiste / Climatisation</option>
-          <option>Multi-services</option><option>Autre</option>
-        </select>
+      <h2>Votre activite</h2>
+      <p class="step-desc">Ces infos nous permettent de creer un site adapte a votre secteur.</p>
+      <div class="field"><label>Votre metier</label>
+        <select id="f-metier"><option value="">Selectionnez votre metier</option><option>Plombier</option><option>Electricien</option><option>Peintre</option><option>Macon</option><option>Menuisier</option><option>Carreleur</option><option>Couvreur</option><option>Chauffagiste</option><option>Multi-services</option><option>Autre</option></select>
       </div>
-      <div class="field"><label>Ville ou département d'intervention</label><input type="text" id="f-zone" placeholder="ex: Lyon, 69 / Paris 15e / Bordeaux et alentours"></div>
-      <div class="field"><label>Décrivez votre activité en quelques mots</label><textarea id="f-desc" placeholder="ex: Plombier depuis 10 ans, je travaille sur Lyon et sa banlieue, spécialisé dans les urgences et la rénovation salle de bain..."></textarea></div>
-      <div class="form-nav">
-        <button class="btn-back" data-goto="1">← Retour</button>
-        <button class="btn-next" data-goto="3">Continuer →</button>
-      </div>
+      <div class="field"><label>Zone d'intervention</label><input type="text" id="f-zone" placeholder="ex: Lyon, 69"></div>
+      <div class="field"><label>Decrivez votre activite</label><textarea id="f-desc" placeholder="ex: Plombier depuis 10 ans..."></textarea></div>
+      <div class="form-nav"><button class="btn-back" id="back2">Retour</button><button class="btn-next" id="next2">Continuer</button></div>
     </div>
-
-    <!-- ÉTAPE 3 -->
     <div class="step-page" id="page3">
       <h2>Votre futur site</h2>
-      <p class="step-desc">Dites-nous ce que vous voulez mettre en avant pour qu'on crée exactement ce qu'il vous faut.</p>
-      <div class="field">
-        <label>Couleurs souhaitées (plusieurs choix possibles)</label>
+      <p class="step-desc">Dites-nous ce que vous voulez mettre en avant.</p>
+      <div class="field"><label>Couleurs souhaitees</label>
         <div class="chips" id="chips-couleurs">
-          <div class="chip" data-toggle-chip="1">Bleu</div>
-          <div class="chip" data-toggle-chip="1">Gris / Anthracite</div>
-          <div class="chip" data-toggle-chip="1">Orange / Rouge</div>
-          <div class="chip" data-toggle-chip="1">Vert</div>
-          <div class="chip" data-toggle-chip="1">Noir & Blanc</div>
-          <div class="chip" data-toggle-chip="1">Mes couleurs actuelles</div>
-          <div class="chip" data-toggle-chip="1">Vous décidez</div>
+          <div class="chip">Bleu</div><div class="chip">Gris</div><div class="chip">Orange</div><div class="chip">Vert</div><div class="chip">Noir et Blanc</div><div class="chip">Vous decidez</div>
         </div>
       </div>
-      <div class="field"><label>Services principaux à mettre en avant</label><textarea id="f-services" placeholder="ex: dépannage urgence, installation chaudière, rénovation salle de bain, entretien annuel..."></textarea></div>
-      <div class="field"><label>Avez-vous des photos de vos réalisations ?</label>
-        <div class="chips" id="chips-photos">
-          <div class="chip" data-select-chip="chips-photos">Oui, j'en ai</div>
-          <div class="chip" data-select-chip="chips-photos">Non, pas encore</div>
-          <div class="chip" data-select-chip="chips-photos">Je peux en faire</div>
-        </div>
+      <div class="field"><label>Services a mettre en avant</label><textarea id="f-services" placeholder="ex: urgences, renovation..."></textarea></div>
+      <div class="field"><label>Photos de realisations ?</label>
+        <div class="chips" id="chips-photos"><div class="chip">Oui</div><div class="chip">Non</div><div class="chip">Je peux en faire</div></div>
       </div>
-      <div class="field"><label>Site d'un concurrent que vous souhaitez dépasser (facultatif)</label><input type="text" id="f-concurrent" placeholder="ex: plombier-durand-lyon.fr"></div>
-      <div class="field"><label>Sites que vous aimez comme inspiration (facultatif)</label><input type="text" id="f-exemples" placeholder="ex: monsite.com ou 'j'aime les sites simples et épurés'"></div>
-      <div class="form-nav">
-        <button class="btn-back" data-goto="2">← Retour</button>
-        <button class="btn-next" data-goto="4">Continuer →</button>
-      </div>
+      <div class="field"><label>Concurrent a depasser (facultatif)</label><input type="text" id="f-concurrent" placeholder="ex: plombier-durand.fr"></div>
+      <div class="form-nav"><button class="btn-back" id="back3">Retour</button><button class="btn-next" id="next3">Continuer</button></div>
     </div>
-
-    <!-- ÉTAPE 4 -->
     <div class="step-page" id="page4">
-      <h2>Budget & délai</h2>
-      <p class="step-desc">Dernière étape ! Ces infos nous aident à vous proposer la meilleure solution.</p>
-      <div class="field">
-        <label>Budget envisagé</label>
-        <div class="chips" id="chips-budget">
-          <div class="chip" data-select-chip="chips-budget">Moins de 500€</div>
-          <div class="chip" data-select-chip="chips-budget">500€ – 1000€</div>
-          <div class="chip selected" data-select-chip="chips-budget">1490€ (offre complète)</div>
-          <div class="chip" data-select-chip="chips-budget">Pas encore décidé</div>
-        </div>
+      <h2>Budget et delai</h2>
+      <p class="step-desc">Derniere etape !</p>
+      <div class="field"><label>Budget envisage</label>
+        <div class="chips" id="chips-budget"><div class="chip">Moins de 500</div><div class="chip">500 a 1000</div><div class="chip selected">1490 offre complete</div><div class="chip">Pas encore decide</div></div>
       </div>
-      <div class="field">
-        <label>Quand voulez-vous votre site en ligne ?</label>
-        <div class="chips" id="chips-delai">
-          <div class="chip" data-select-chip="chips-delai">Le plus vite possible</div>
-          <div class="chip selected" data-select-chip="chips-delai">Dans les 2 semaines</div>
-          <div class="chip" data-select-chip="chips-delai">Dans le mois</div>
-          <div class="chip" data-select-chip="chips-delai">Je ne suis pas pressé</div>
-        </div>
+      <div class="field"><label>Quand voulez-vous votre site ?</label>
+        <div class="chips" id="chips-delai"><div class="chip">Le plus vite possible</div><div class="chip selected">Dans les 2 semaines</div><div class="chip">Dans le mois</div><div class="chip">Pas presse</div></div>
       </div>
-      <div class="field">
-        <label>Avez-vous déjà un logo ?</label>
-        <div class="chips" id="chips-logo">
-          <div class="chip" data-select-chip="chips-logo">Oui, j'ai un logo</div>
-          <div class="chip" data-select-chip="chips-logo">Non, j'en ai besoin</div>
-          <div class="chip" data-select-chip="chips-logo">Non, pas nécessaire</div>
-        </div>
+      <div class="field"><label>Avez-vous un logo ?</label>
+        <div class="chips" id="chips-logo"><div class="chip">Oui</div><div class="chip">Non, j'en ai besoin</div><div class="chip">Non, pas necessaire</div></div>
       </div>
-      <div class="field">
-        <label>Avez-vous déjà un nom de domaine ?</label>
-        <div class="chips" id="chips-domaine">
-          <div class="chip" data-select-chip="chips-domaine">Oui</div>
-          <div class="chip" data-select-chip="chips-domaine">Non</div>
-          <div class="chip" data-select-chip="chips-domaine">Je ne sais pas</div>
-        </div>
+      <div class="field"><label>Avez-vous un nom de domaine ?</label>
+        <div class="chips" id="chips-domaine"><div class="chip">Oui</div><div class="chip">Non</div><div class="chip">Je ne sais pas</div></div>
       </div>
-      <div class="field"><label>Informations complémentaires (facultatif)</label><textarea id="f-autres" placeholder="Tout ce qui pourrait nous aider à créer le site parfait pour vous..."></textarea></div>
-      <div class="form-nav">
-        <button class="btn-back" data-goto="3">← Retour</button>
-        <button class="btn-next" data-submit="1">Envoyer ma demande ✓</button>
-      </div>
+      <div class="field"><label>Infos complementaires (facultatif)</label><textarea id="f-autres" placeholder="Tout ce qui pourrait nous aider..."></textarea></div>
+      <div class="form-nav"><button class="btn-back" id="back4">Retour</button><button class="btn-next" id="submit">Envoyer ma demande</button></div>
     </div>
-
-    <!-- CONFIRMATION -->
     <div class="confirmation-page" id="pageConfirm">
-      <div class="confirm-icon">🎉</div>
-      <h2>Demande envoyée !</h2>
-      <p>Merci <strong id="confirm-prenom"></strong> ! On a bien reçu votre demande. On vous recontacte sous <strong>24h</strong> par email ou téléphone pour vous envoyer votre devis personnalisé.</p>
+      <div class="confirm-icon">OK</div>
+      <h2>Demande envoyee !</h2>
+      <p>Merci <strong id="confirm-prenom"></strong> ! On vous recontacte sous 24h.</p>
       <div class="summary-box" id="summaryBox"></div>
-      <button class="btn-next" data-close="1" style="width:100%;border-radius:12px;">Fermer</button>
+      <button class="btn-next" id="btn-fermer" style="width:100%;border-radius:12px;">Fermer</button>
     </div>
   </div>
 </div>
 
 <script>
-window.addEventListener('DOMContentLoaded',function(){
-  var s=1;
-  window.openDevis=function(e){if(e)e.preventDefault();document.getElementById('devisModal').classList.add('active');document.body.style.overflow='hidden';};
-  window.closeDevis=function(){document.getElementById('devisModal').classList.remove('active');document.body.style.overflow='';};
-  window.goTo=function(n){document.getElementById('page'+s).classList.remove('active');s=n;document.getElementById('page'+s).classList.add('active');document.getElementById('progressFill').style.width=(n/4*100)+'%';document.getElementById('progressLabel').textContent='Etape '+n+' sur 4';document.getElementById('devisBox').scrollTop=0;};
-  window.toggleChip=function(el){el.classList.toggle('selected');};
-  window.selectChip=function(g,el){document.querySelectorAll('#'+g+' .chip').forEach(function(c){c.classList.remove('selected');});el.classList.add('selected');};
-  window.submitDevis=function(){
-    function gc(g){return Array.from(document.querySelectorAll('#'+g+' .chip.selected')).map(function(c){return c.textContent.trim();}).join(', ')||'-';}
+(function(){
+  var step=1;
+
+  function openModal(){document.getElementById('devisModal').classList.add('active');document.body.style.overflow='hidden';}
+  function closeModal(){document.getElementById('devisModal').classList.remove('active');document.body.style.overflow='';}
+  function goTo(n){
+    document.getElementById('page'+step).classList.remove('active');
+    step=n;
+    document.getElementById('page'+step).classList.add('active');
+    document.getElementById('progressFill').style.width=(n/4*100)+'%';
+    document.getElementById('progressLabel').textContent='Etape '+n+' sur 4';
+    document.getElementById('devisBox').scrollTop=0;
+  }
+  function gc(id){
+    var r=[];
+    document.querySelectorAll('#'+id+' .chip.selected').forEach(function(c){r.push(c.textContent.trim());});
+    return r.join(', ')||'-';
+  }
+
+  document.getElementById('btn-nav').addEventListener('click',function(e){e.preventDefault();openModal();});
+  document.getElementById('btn-hero').addEventListener('click',function(e){e.preventDefault();openModal();});
+  document.getElementById('btn-offre').addEventListener('click',function(e){e.preventDefault();openModal();});
+  document.getElementById('btn-cta').addEventListener('click',function(e){e.preventDefault();openModal();});
+  document.getElementById('btn-close').addEventListener('click',closeModal);
+  document.getElementById('btn-fermer').addEventListener('click',closeModal);
+  document.getElementById('devisModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+  document.getElementById('next1').addEventListener('click',function(){goTo(2);});
+  document.getElementById('back2').addEventListener('click',function(){goTo(1);});
+  document.getElementById('next2').addEventListener('click',function(){goTo(3);});
+  document.getElementById('back3').addEventListener('click',function(){goTo(2);});
+  document.getElementById('next3').addEventListener('click',function(){goTo(4);});
+  document.getElementById('back4').addEventListener('click',function(){goTo(3);});
+
+  document.querySelectorAll('#chips-couleurs .chip').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('selected');});});
+  ['chips-photos','chips-budget','chips-delai','chips-logo','chips-domaine'].forEach(function(id){
+    document.querySelectorAll('#'+id+' .chip').forEach(function(c){
+      c.addEventListener('click',function(){
+        document.querySelectorAll('#'+id+' .chip').forEach(function(x){x.classList.remove('selected');});
+        c.classList.add('selected');
+      });
+    });
+  });
+
+  document.getElementById('submit').addEventListener('click',function(){
     var p=document.getElementById('f-prenom').value||'Client';
     var n=document.getElementById('f-nom').value||'';
     var em=document.getElementById('f-email').value||'-';
@@ -426,18 +352,25 @@ window.addEventListener('DOMContentLoaded',function(){
     var msg='Devis RenoWeb%0ANom : '+encodeURIComponent(p+' '+n)+'%0AEmail : '+encodeURIComponent(em)+'%0ATel : '+encodeURIComponent(t)+'%0AMetier : '+encodeURIComponent(me)+'%0AZone : '+encodeURIComponent(z)+'%0ABudget : '+encodeURIComponent(gc('chips-budget'))+'%0ADelai : '+encodeURIComponent(gc('chips-delai'))+'%0ACouleurs : '+encodeURIComponent(gc('chips-couleurs'))+'%0APhotos : '+encodeURIComponent(gc('chips-photos'))+'%0ALogo : '+encodeURIComponent(gc('chips-logo'))+'%0ADomaine : '+encodeURIComponent(gc('chips-domaine'))+'%0AServices : '+encodeURIComponent(sv)+'%0ADescription : '+encodeURIComponent(d);
     window.open('https://wa.me/33614312919?text='+msg,'_blank');
     document.getElementById('confirm-prenom').textContent=p;
-    var rows=[['Nom',p+' '+n],['Email',em],['Tel',t],['Metier',me],['Zone',z],['Budget',gc('chips-budget')],['Delai',gc('chips-delai')],['Logo',gc('chips-logo')]];
+    var rows=[['Nom',p+' '+n],['Email',em],['Tel',t],['Metier',me],['Zone',z],['Budget',gc('chips-budget')],['Delai',gc('chips-delai')]];
     document.getElementById('summaryBox').innerHTML=rows.map(function(r){return '<div class="summary-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('');
     document.getElementById('page4').classList.remove('active');
     document.getElementById('progressWrap').style.display='none';
     document.getElementById('pageConfirm').classList.add('active');
     document.getElementById('devisBox').scrollTop=0;
-  };
-  document.getElementById('devisModal').addEventListener('click',function(e){if(e.target===this)window.closeDevis();});
-  document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var item=q.parentElement,o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!o)item.classList.add('open');});});
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var item=q.parentElement,o=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
+      if(!o)item.classList.add('open');
+    });
+  });
+
   var ob=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
   document.querySelectorAll('.card,.testi,.step,.offer-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';ob.observe(el);});
-});
+})();
 </script>
 </body>
 </html>
