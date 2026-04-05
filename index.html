@@ -265,7 +265,7 @@
   <p style="font-size:13px;color:var(--muted);margin-top:1rem;">Sans engagement · Réponse sous 24h · 100% gratuit</p>
 </div>
 
-<div class="footer">© 2026 RénoWeb · <a href="mailto:contact@renoweb.fr" style="color:var(--muted);text-decoration:none;">contact@renoweb.fr</a></div>
+<div class="footer">© 2026 RénoWeb · <a href="/cdn-cgi/l/email-protection#f0939f9e84919384b082959e9f879592de9682" style="color:var(--muted);text-decoration:none;"><span class="__cf_email__" data-cfemail="d7b4b8b9a3b6b4a397a5b2b9b8a0b2b5f9b1a5">[email&#160;protected]</span></a></div>
 
 <!-- MODAL DEVIS -->
 <div class="devis-modal-overlay" id="devisModal">
@@ -405,7 +405,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   let currentStep = 1;
   const stepTitles = ['Vos informations','Votre activité','Votre futur site','Budget & délai'];
 
@@ -427,21 +427,66 @@
   function selectChip(gid,el){document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
   function getChips(gid){return Array.from(document.querySelectorAll('#'+gid+' .chip.selected')).map(c=>c.textContent).join(', ')||'—';}
 
-  function submitDevis(){
+  async function submitDevis(){
     const prenom=document.getElementById('f-prenom').value||'Client';
+    const nom=document.getElementById('f-nom').value||'';
+    const email=document.getElementById('f-email').value||'—';
+    const tel=document.getElementById('f-tel').value||'—';
+    const metier=document.getElementById('f-metier').value||'—';
+    const zone=document.getElementById('f-zone').value||'—';
+    const desc=document.getElementById('f-desc').value||'—';
+    const services=document.getElementById('f-services').value||'—';
+    const concurrent=document.getElementById('f-concurrent').value||'—';
+    const exemples=document.getElementById('f-exemples').value||'—';
+    const autres=document.getElementById('f-autres').value||'—';
+    const couleurs=getChips('chips-couleurs');
+    const photos=getChips('chips-photos');
+    const budget=getChips('chips-budget');
+    const delai=getChips('chips-delai');
+    const logo=getChips('chips-logo');
+    const domaine=getChips('chips-domaine');
+
+    // 1. Envoi email via Formspree
+    const formData={
+      _subject:'Nouvelle demande de devis RénoWeb — '+prenom+' '+nom,
+      Prénom:prenom, Nom:nom, Email:email, Téléphone:tel,
+      Métier:metier, Zone:zone, Description:desc,
+      Services:services, Couleurs:couleurs,
+      Photos_réalisations:photos, Concurrent:concurrent,
+      Inspiration:exemples, Budget:budget,
+      Délai:delai, Logo:logo, Domaine:domaine,
+      Informations_complémentaires:autres
+    };
+    try {
+      await fetch('https://formspree.io/f/xkgjpdpw',{
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(formData)
+      });
+    } catch(e){ console.log('Formspree error',e); }
+
+    // 2. Ouvrir WhatsApp avec résumé
+    const waMsg=
+      '🔔 *Nouvelle demande de devis RénoWeb*\n\n'+
+      '👤 *'+prenom+' '+nom+'*\n'+
+      '📧 '+email+'\n📞 '+tel+'\n\n'+
+      '🔨 Métier : '+metier+'\n'+
+      '📍 Zone : '+zone+'\n'+
+      '💰 Budget : '+budget+'\n'+
+      '⏱ Délai : '+delai+'\n'+
+      '🎨 Couleurs : '+couleurs+'\n'+
+      '🖼 Photos : '+photos+'\n'+
+      '🏷 Logo : '+logo+'\n'+
+      '🌐 Domaine : '+domaine+'\n\n'+
+      '📝 Services : '+services+'\n'+
+      '📋 Description : '+desc;
+    window.open('https://wa.me/33614312919?text='+encodeURIComponent(waMsg),'_blank');
+
+    // 3. Afficher confirmation
     document.getElementById('confirm-prenom').textContent=prenom;
     const rows=[
-      ['Nom',(prenom+' '+document.getElementById('f-nom').value).trim()||'—'],
-      ['Email',document.getElementById('f-email').value||'—'],
-      ['Téléphone',document.getElementById('f-tel').value||'—'],
-      ['Métier',document.getElementById('f-metier').value||'—'],
-      ['Zone',document.getElementById('f-zone').value||'—'],
-      ['Couleurs',getChips('chips-couleurs')],
-      ['Photos réalisations',getChips('chips-photos')],
-      ['Budget',getChips('chips-budget')],
-      ['Délai',getChips('chips-delai')],
-      ['Logo',getChips('chips-logo')],
-      ['Domaine',getChips('chips-domaine')],
+      ['Nom',(prenom+' '+nom).trim()||'—'],['Email',email],['Téléphone',tel],
+      ['Métier',metier],['Zone',zone],['Couleurs',couleurs],
+      ['Photos',photos],['Budget',budget],['Délai',delai],['Logo',logo],['Domaine',domaine],
     ];
     document.getElementById('summaryBox').innerHTML=rows.map(([k,v])=>`<div class="summary-row"><span>${k}</span><span>${v}</span></div>`).join('');
     document.getElementById('page4').classList.remove('active');
@@ -459,7 +504,3 @@
   });
 
   const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
-  document.querySelectorAll('.card,.testi,.step,.offer-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
-</script>
-</body>
-</html>
