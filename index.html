@@ -174,7 +174,7 @@
   <div class="section-sub">Un prix fixe, sans surprise, sans abonnement cache.</div>
   <div class="offer-card">
     <div class="popular-badge">Offre la plus demandee</div>
-    <div class="price">1 490 <span>TTC</span></div>
+    <div class="price">1 490&euro; <span>TTC</span></div>
     <p style="font-size:13px;color:var(--muted);margin-top:6px;">Paiement en 2 fois sans frais disponible</p>
     <div class="guarantee">Retouches illimitees jusqu'a votre validation</div>
     <ul class="feature-list">
@@ -219,7 +219,7 @@
   <a href="#" class="btn-primary" id="btn-cta" style="font-size:17px;padding:18px 40px;">Demarrer mon devis gratuit</a>
 </div>
 
-<div class="footer">2026 RenoWeb - contact@renoweb.fr</div>
+<div class="footer">2026 RenoWeb - <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5d6dadbc1d4d6c1f5c7d0dbdac2d0d79bd3c7">[email&#160;protected]</a></div>
 
 <div class="devis-modal-overlay" id="devisModal">
   <div class="devis-modal" id="devisBox">
@@ -295,7 +295,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var step=1;
 
@@ -350,7 +350,13 @@
     var d=document.getElementById('f-desc').value||'-';
     var sv=document.getElementById('f-services').value||'-';
     var msg='Devis RenoWeb%0ANom : '+encodeURIComponent(p+' '+n)+'%0AEmail : '+encodeURIComponent(em)+'%0ATel : '+encodeURIComponent(t)+'%0AMetier : '+encodeURIComponent(me)+'%0AZone : '+encodeURIComponent(z)+'%0ABudget : '+encodeURIComponent(gc('chips-budget'))+'%0ADelai : '+encodeURIComponent(gc('chips-delai'))+'%0ACouleurs : '+encodeURIComponent(gc('chips-couleurs'))+'%0APhotos : '+encodeURIComponent(gc('chips-photos'))+'%0ALogo : '+encodeURIComponent(gc('chips-logo'))+'%0ADomaine : '+encodeURIComponent(gc('chips-domaine'))+'%0AServices : '+encodeURIComponent(sv)+'%0ADescription : '+encodeURIComponent(d);
-    window.open('https://wa.me/33614312919?text='+msg,'_blank');
+    var a=document.createElement('a');
+    a.href='https://wa.me/33614312919?text='+msg;
+    a.target='_blank';
+    a.rel='noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     document.getElementById('confirm-prenom').textContent=p;
     var rows=[['Nom',p+' '+n],['Email',em],['Tel',t],['Metier',me],['Zone',z],['Budget',gc('chips-budget')],['Delai',gc('chips-delai')]];
     document.getElementById('summaryBox').innerHTML=rows.map(function(r){return '<div class="summary-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('');
@@ -369,8 +375,4 @@
   });
 
   var ob=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
-  document.querySelectorAll('.card,.testi,.step,.offer-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';ob.observe(el);});
-})();
-</script>
-</body>
-</html>
+  document.querySelector
