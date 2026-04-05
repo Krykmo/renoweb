@@ -167,7 +167,7 @@
 
 <nav class="nav">
   <div class="logo">Réno<span>Web</span></div>
-  <a href="#" class="nav-cta" onclick="openDevis(event)">Devis gratuit</a>
+  <a href="#" class="nav-cta" data-devis="1">Devis gratuit</a>
 </nav>
 
 <div class="hero">
@@ -175,7 +175,7 @@
   <h1 class="fade-up delay-1">Votre site web professionnel<br>livré en <span>7 jours chrono</span></h1>
   <p class="fade-up delay-2">Plombier, électricien, peintre ou maçon ? On crée votre vitrine digitale clé en main pour que vos clients vous trouvent sur Google — sans prise de tête.</p>
   <div class="hero-btns fade-up delay-3">
-    <a href="#" class="btn-primary" onclick="openDevis(event)">Obtenir mon devis gratuit →</a>
+    <a href="#" class="btn-primary" data-devis="1">Obtenir mon devis gratuit →</a>
     <a href="#offre" class="btn-secondary">Voir l'offre</a>
   </div>
   <div class="stats-bar fade-up delay-4">
@@ -229,7 +229,7 @@
       <li><span class="check">✓</span> Livraison garantie en 7 jours</li>
       <li><span class="check">✓</span> 1 mois de support offert</li>
     </ul>
-    <a href="#" class="btn-primary" onclick="openDevis(event)" style="display:flex;justify-content:center;width:100%;font-size:16px;padding:17px;border-radius:12px;">Je veux mon site web →</a>
+    <a href="#" class="btn-primary" data-devis="1" style="display:flex;justify-content:center;width:100%;font-size:16px;padding:17px;border-radius:12px;">Je veux mon site web →</a>
   </div>
 </div>
 
@@ -261,7 +261,7 @@
   <div style="text-align:center"><div class="section-tag">Contact</div></div>
   <div class="section-title">Prêt à booster votre activité ?</div>
   <div class="section-sub">Remplissez notre formulaire en 2 minutes et recevez votre devis personnalisé sous 24h.</div>
-  <a href="#" class="btn-primary" onclick="openDevis(event)" style="font-size:17px;padding:18px 40px;">Démarrer mon devis gratuit →</a>
+  <a href="#" class="btn-primary" data-devis="1" style="font-size:17px;padding:18px 40px;">Démarrer mon devis gratuit →</a>
   <p style="font-size:13px;color:var(--muted);margin-top:1rem;">Sans engagement · Réponse sous 24h · 100% gratuit</p>
 </div>
 
@@ -270,7 +270,7 @@
 <!-- MODAL DEVIS -->
 <div class="devis-modal-overlay" id="devisModal">
   <div class="devis-modal" id="devisBox">
-    <button class="modal-close" onclick="closeDevis()">✕</button>
+    <button class="modal-close" data-close="1">✕</button>
 
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-header">
@@ -291,7 +291,7 @@
       <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="jean.dupont@email.com"></div>
       <div class="field"><label>Téléphone</label><input type="tel" id="f-tel" placeholder="06 12 34 56 78"></div>
       <div class="form-nav">
-        <button class="btn-next" onclick="goTo(2)">Continuer →</button>
+        <button class="btn-next" data-goto="2">Continuer →</button>
       </div>
     </div>
 
@@ -312,8 +312,8 @@
       <div class="field"><label>Ville ou département d'intervention</label><input type="text" id="f-zone" placeholder="ex: Lyon, 69 / Paris 15e / Bordeaux et alentours"></div>
       <div class="field"><label>Décrivez votre activité en quelques mots</label><textarea id="f-desc" placeholder="ex: Plombier depuis 10 ans, je travaille sur Lyon et sa banlieue, spécialisé dans les urgences et la rénovation salle de bain..."></textarea></div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goTo(1)">← Retour</button>
-        <button class="btn-next" onclick="goTo(3)">Continuer →</button>
+        <button class="btn-back" data-goto="1">← Retour</button>
+        <button class="btn-next" data-goto="3">Continuer →</button>
       </div>
     </div>
 
@@ -324,28 +324,28 @@
       <div class="field">
         <label>Couleurs souhaitées (plusieurs choix possibles)</label>
         <div class="chips" id="chips-couleurs">
-          <div class="chip" onclick="toggleChip(this)">Bleu</div>
-          <div class="chip" onclick="toggleChip(this)">Gris / Anthracite</div>
-          <div class="chip" onclick="toggleChip(this)">Orange / Rouge</div>
-          <div class="chip" onclick="toggleChip(this)">Vert</div>
-          <div class="chip" onclick="toggleChip(this)">Noir & Blanc</div>
-          <div class="chip" onclick="toggleChip(this)">Mes couleurs actuelles</div>
-          <div class="chip" onclick="toggleChip(this)">Vous décidez</div>
+          <div class="chip" data-toggle-chip="1">Bleu</div>
+          <div class="chip" data-toggle-chip="1">Gris / Anthracite</div>
+          <div class="chip" data-toggle-chip="1">Orange / Rouge</div>
+          <div class="chip" data-toggle-chip="1">Vert</div>
+          <div class="chip" data-toggle-chip="1">Noir & Blanc</div>
+          <div class="chip" data-toggle-chip="1">Mes couleurs actuelles</div>
+          <div class="chip" data-toggle-chip="1">Vous décidez</div>
         </div>
       </div>
       <div class="field"><label>Services principaux à mettre en avant</label><textarea id="f-services" placeholder="ex: dépannage urgence, installation chaudière, rénovation salle de bain, entretien annuel..."></textarea></div>
       <div class="field"><label>Avez-vous des photos de vos réalisations ?</label>
         <div class="chips" id="chips-photos">
-          <div class="chip" onclick="selectChip('chips-photos',this)">Oui, j'en ai</div>
-          <div class="chip" onclick="selectChip('chips-photos',this)">Non, pas encore</div>
-          <div class="chip" onclick="selectChip('chips-photos',this)">Je peux en faire</div>
+          <div class="chip" data-select-chip="chips-photos">Oui, j'en ai</div>
+          <div class="chip" data-select-chip="chips-photos">Non, pas encore</div>
+          <div class="chip" data-select-chip="chips-photos">Je peux en faire</div>
         </div>
       </div>
       <div class="field"><label>Site d'un concurrent que vous souhaitez dépasser (facultatif)</label><input type="text" id="f-concurrent" placeholder="ex: plombier-durand-lyon.fr"></div>
       <div class="field"><label>Sites que vous aimez comme inspiration (facultatif)</label><input type="text" id="f-exemples" placeholder="ex: monsite.com ou 'j'aime les sites simples et épurés'"></div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goTo(2)">← Retour</button>
-        <button class="btn-next" onclick="goTo(4)">Continuer →</button>
+        <button class="btn-back" data-goto="2">← Retour</button>
+        <button class="btn-next" data-goto="4">Continuer →</button>
       </div>
     </div>
 
@@ -356,41 +356,41 @@
       <div class="field">
         <label>Budget envisagé</label>
         <div class="chips" id="chips-budget">
-          <div class="chip" onclick="selectChip('chips-budget',this)">Moins de 500€</div>
-          <div class="chip" onclick="selectChip('chips-budget',this)">500€ – 1000€</div>
-          <div class="chip selected" onclick="selectChip('chips-budget',this)">1490€ (offre complète)</div>
-          <div class="chip" onclick="selectChip('chips-budget',this)">Pas encore décidé</div>
+          <div class="chip" data-select-chip="chips-budget">Moins de 500€</div>
+          <div class="chip" data-select-chip="chips-budget">500€ – 1000€</div>
+          <div class="chip selected" data-select-chip="chips-budget">1490€ (offre complète)</div>
+          <div class="chip" data-select-chip="chips-budget">Pas encore décidé</div>
         </div>
       </div>
       <div class="field">
         <label>Quand voulez-vous votre site en ligne ?</label>
         <div class="chips" id="chips-delai">
-          <div class="chip" onclick="selectChip('chips-delai',this)">Le plus vite possible</div>
-          <div class="chip selected" onclick="selectChip('chips-delai',this)">Dans les 2 semaines</div>
-          <div class="chip" onclick="selectChip('chips-delai',this)">Dans le mois</div>
-          <div class="chip" onclick="selectChip('chips-delai',this)">Je ne suis pas pressé</div>
+          <div class="chip" data-select-chip="chips-delai">Le plus vite possible</div>
+          <div class="chip selected" data-select-chip="chips-delai">Dans les 2 semaines</div>
+          <div class="chip" data-select-chip="chips-delai">Dans le mois</div>
+          <div class="chip" data-select-chip="chips-delai">Je ne suis pas pressé</div>
         </div>
       </div>
       <div class="field">
         <label>Avez-vous déjà un logo ?</label>
         <div class="chips" id="chips-logo">
-          <div class="chip" onclick="selectChip('chips-logo',this)">Oui, j'ai un logo</div>
-          <div class="chip" onclick="selectChip('chips-logo',this)">Non, j'en ai besoin</div>
-          <div class="chip" onclick="selectChip('chips-logo',this)">Non, pas nécessaire</div>
+          <div class="chip" data-select-chip="chips-logo">Oui, j'ai un logo</div>
+          <div class="chip" data-select-chip="chips-logo">Non, j'en ai besoin</div>
+          <div class="chip" data-select-chip="chips-logo">Non, pas nécessaire</div>
         </div>
       </div>
       <div class="field">
         <label>Avez-vous déjà un nom de domaine ?</label>
         <div class="chips" id="chips-domaine">
-          <div class="chip" onclick="selectChip('chips-domaine',this)">Oui</div>
-          <div class="chip" onclick="selectChip('chips-domaine',this)">Non</div>
-          <div class="chip" onclick="selectChip('chips-domaine',this)">Je ne sais pas</div>
+          <div class="chip" data-select-chip="chips-domaine">Oui</div>
+          <div class="chip" data-select-chip="chips-domaine">Non</div>
+          <div class="chip" data-select-chip="chips-domaine">Je ne sais pas</div>
         </div>
       </div>
       <div class="field"><label>Informations complémentaires (facultatif)</label><textarea id="f-autres" placeholder="Tout ce qui pourrait nous aider à créer le site parfait pour vous..."></textarea></div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goTo(3)">← Retour</button>
-        <button class="btn-next" onclick="submitDevis()">Envoyer ma demande ✓</button>
+        <button class="btn-back" data-goto="3">← Retour</button>
+        <button class="btn-next" data-submit="1">Envoyer ma demande ✓</button>
       </div>
     </div>
 
@@ -400,7 +400,7 @@
       <h2>Demande envoyée !</h2>
       <p>Merci <strong id="confirm-prenom"></strong> ! On a bien reçu votre demande. On vous recontacte sous <strong>24h</strong> par email ou téléphone pour vous envoyer votre devis personnalisé.</p>
       <div class="summary-box" id="summaryBox"></div>
-      <button class="btn-next" onclick="closeDevis()" style="width:100%;border-radius:12px;">Fermer</button>
+      <button class="btn-next" data-close="1" style="width:100%;border-radius:12px;">Fermer</button>
     </div>
   </div>
 </div>
