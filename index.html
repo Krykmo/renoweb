@@ -407,114 +407,37 @@
 
 <script>
 window.addEventListener('DOMContentLoaded',function(){
-  var currentStep=1;
-  var stepTitles=['Vos informations','Votre activite','Votre futur site','Budget et delai'];
+  var s=1;
   window.openDevis=function(e){if(e)e.preventDefault();document.getElementById('devisModal').classList.add('active');document.body.style.overflow='hidden';};
   window.closeDevis=function(){document.getElementById('devisModal').classList.remove('active');document.body.style.overflow='';};
-  document.getElementById('devisModal').addEventListener('click',function(e){if(e.target===this)window.closeDevis();});
-  window.goTo=function(step){document.getElementById('page'+currentStep).classList.remove('active');currentStep=step;document.getElementById('page'+currentStep).classList.add('active');document.getElementById('progressFill').style.width=(step/4*100)+'%';document.getElementById('progressLabel').textContent='Etape '+step+' sur 4';document.getElementById('progressTitle').textContent=stepTitles[step-1];document.getElementById('devisBox').scrollTop=0;};
+  window.goTo=function(n){document.getElementById('page'+s).classList.remove('active');s=n;document.getElementById('page'+s).classList.add('active');document.getElementById('progressFill').style.width=(n/4*100)+'%';document.getElementById('progressLabel').textContent='Etape '+n+' sur 4';document.getElementById('devisBox').scrollTop=0;};
   window.toggleChip=function(el){el.classList.toggle('selected');};
-  window.selectChip=function(gid,el){document.querySelectorAll('#'+gid+' .chip').forEach(function(c){c.classList.remove('selected');});el.classList.add('selected');};
-  function getChips(gid){return Array.from(document.querySelectorAll('#'+gid+' .chip.selected')).map(function(c){return c.textContent;}).join(', ')||'-';}
+  window.selectChip=function(g,el){document.querySelectorAll('#'+g+' .chip').forEach(function(c){c.classList.remove('selected');});el.classList.add('selected');};
   window.submitDevis=function(){
-    var prenom=document.getElementById('f-prenom').value||'Client';
-    var nom=document.getElementById('f-nom').value||'';
-    var email=document.getElementById('f-email').value||'-';
-    var tel=document.getElementById('f-tel').value||'-';
-    var metier=document.getElementById('f-metier').value||'-';
-    var zone=document.getElementById('f-zone').value||'-';
-    var desc=document.getElementById('f-desc').value||'-';
-    var services=document.getElementById('f-services').value||'-';
-    var couleurs=getChips('chips-couleurs');
-    var photos=getChips('chips-photos');
-    var budget=getChips('chips-budget');
-    var delai=getChips('chips-delai');
-    var logo=getChips('chips-logo');
-    var domaine=getChips('chips-domaine');
-    var msg='Devis+RenoWeb%0ANom+:+'+encodeURIComponent(prenom+' '+nom)+'%0AEmail+:+'+encodeURIComponent(email)+'%0ATel+:+'+encodeURIComponent(tel)+'%0AMetier+:+'+encodeURIComponent(metier)+'%0AZone+:+'+encodeURIComponent(zone)+'%0ABudget+:+'+encodeURIComponent(budget)+'%0ADelai+:+'+encodeURIComponent(delai)+'%0ACouleurs+:+'+encodeURIComponent(couleurs)+'%0APhotos+:+'+encodeURIComponent(photos)+'%0ALogo+:+'+encodeURIComponent(logo)+'%0ADomaine+:+'+encodeURIComponent(domaine)+'%0AServices+:+'+encodeURIComponent(services)+'%0ADescription+:+'+encodeURIComponent(desc);
+    function gc(g){return Array.from(document.querySelectorAll('#'+g+' .chip.selected')).map(function(c){return c.textContent.trim();}).join(', ')||'-';}
+    var p=document.getElementById('f-prenom').value||'Client';
+    var n=document.getElementById('f-nom').value||'';
+    var em=document.getElementById('f-email').value||'-';
+    var t=document.getElementById('f-tel').value||'-';
+    var me=document.getElementById('f-metier').value||'-';
+    var z=document.getElementById('f-zone').value||'-';
+    var d=document.getElementById('f-desc').value||'-';
+    var sv=document.getElementById('f-services').value||'-';
+    var msg='Devis RenoWeb%0ANom : '+encodeURIComponent(p+' '+n)+'%0AEmail : '+encodeURIComponent(em)+'%0ATel : '+encodeURIComponent(t)+'%0AMetier : '+encodeURIComponent(me)+'%0AZone : '+encodeURIComponent(z)+'%0ABudget : '+encodeURIComponent(gc('chips-budget'))+'%0ADelai : '+encodeURIComponent(gc('chips-delai'))+'%0ACouleurs : '+encodeURIComponent(gc('chips-couleurs'))+'%0APhotos : '+encodeURIComponent(gc('chips-photos'))+'%0ALogo : '+encodeURIComponent(gc('chips-logo'))+'%0ADomaine : '+encodeURIComponent(gc('chips-domaine'))+'%0AServices : '+encodeURIComponent(sv)+'%0ADescription : '+encodeURIComponent(d);
     window.open('https://wa.me/33614312919?text='+msg,'_blank');
-    document.getElementById('confirm-prenom').textContent=prenom;
-    var rows=[['Nom',prenom+' '+nom],['Email',email],['Tel',tel],['Metier',metier],['Zone',zone],['Budget',budget],['Delai',delai],['Logo',logo],['Domaine',domaine]];
+    document.getElementById('confirm-prenom').textContent=p;
+    var rows=[['Nom',p+' '+n],['Email',em],['Tel',t],['Metier',me],['Zone',z],['Budget',gc('chips-budget')],['Delai',gc('chips-delai')],['Logo',gc('chips-logo')]];
     document.getElementById('summaryBox').innerHTML=rows.map(function(r){return '<div class="summary-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('');
     document.getElementById('page4').classList.remove('active');
     document.getElementById('progressWrap').style.display='none';
     document.getElementById('pageConfirm').classList.add('active');
     document.getElementById('devisBox').scrollTop=0;
   };
-  document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var item=q.parentElement,isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!isOpen)item.classList.add('open');});});
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
-  document.querySelectorAll('.card,.testi,.step,.offer-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
-
-  function goTo(step){
-    document.getElementById('page'+currentStep).classList.remove('active');
-    currentStep=step;
-    document.getElementById('page'+currentStep).classList.add('active');
-    document.getElementById('progressFill').style.width=(step/4*100)+'%';
-    document.getElementById('progressLabel').textContent='Étape '+step+' sur 4';
-    document.getElementById('progressTitle').textContent=stepTitles[step-1];
-    document.getElementById('devisBox').scrollTop=0;
-  }
-
-  function toggleChip(el){el.classList.toggle('selected');}
-  function selectChip(gid,el){document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
-  function getChips(gid){return Array.from(document.querySelectorAll('#'+gid+' .chip.selected')).map(c=>c.textContent).join(', ')||'—';}
-
-  function submitDevis(){
-    const prenom=document.getElementById('f-prenom').value||'Client';
-    const nom=document.getElementById('f-nom').value||'';
-    const email=document.getElementById('f-email').value||'—';
-    const tel=document.getElementById('f-tel').value||'—';
-    const metier=document.getElementById('f-metier').value||'—';
-    const zone=document.getElementById('f-zone').value||'—';
-    const desc=document.getElementById('f-desc').value||'—';
-    const services=document.getElementById('f-services').value||'—';
-    const concurrent=document.getElementById('f-concurrent').value||'—';
-    const exemples=document.getElementById('f-exemples').value||'—';
-    const autres=document.getElementById('f-autres').value||'—';
-    const couleurs=getChips('chips-couleurs');
-    const photos=getChips('chips-photos');
-    const budget=getChips('chips-budget');
-    const delai=getChips('chips-delai');
-    const logo=getChips('chips-logo');
-    const domaine=getChips('chips-domaine');
-
-    // Ouvrir WhatsApp avec résumé
-    const waMsg=
-      '🔔 *Nouvelle demande de devis RénoWeb*\n\n'+
-      '👤 *'+prenom+' '+nom+'*\n'+
-      '📧 '+email+'\n📞 '+tel+'\n\n'+
-      '🔨 Métier : '+metier+'\n'+
-      '📍 Zone : '+zone+'\n'+
-      '💰 Budget : '+budget+'\n'+
-      '⏱ Délai : '+delai+'\n'+
-      '🎨 Couleurs : '+couleurs+'\n'+
-      '🖼 Photos : '+photos+'\n'+
-      '🏷 Logo : '+logo+'\n'+
-      '🌐 Domaine : '+domaine+'\n\n'+
-      '📝 Services : '+services+'\n'+
-      '📋 Description : '+desc;
-    window.open('https://wa.me/33614312919?text='+encodeURIComponent(waMsg),'_blank');
-
-    // 3. Afficher confirmation
-    document.getElementById('confirm-prenom').textContent=prenom;
-    const rows=[
-      ['Nom',(prenom+' '+nom).trim()||'—'],['Email',email],['Téléphone',tel],
-      ['Métier',metier],['Zone',zone],['Couleurs',couleurs],
-      ['Photos',photos],['Budget',budget],['Délai',delai],['Logo',logo],['Domaine',domaine],
-    ];
-    document.getElementById('summaryBox').innerHTML=rows.map(([k,v])=>`<div class="summary-row"><span>${k}</span><span>${v}</span></div>`).join('');
-    document.getElementById('page4').classList.remove('active');
-    document.getElementById('progressWrap').style.display='none';
-    document.getElementById('pageConfirm').classList.add('active');
-    document.getElementById('devisBox').scrollTop=0;
-  }
-
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      const item=q.parentElement,isOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-      if(!isOpen)item.classList.add('open');
-    });
-  });
-
-  const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+  document.getElementById('devisModal').addEventListener('click',function(e){if(e.target===this)window.closeDevis();});
+  document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var item=q.parentElement,o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!o)item.classList.add('open');});});
+  var ob=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+  document.querySelectorAll('.card,.testi,.step,.offer-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';ob.observe(el);});
+});
+</script>
+</body>
+</html>
